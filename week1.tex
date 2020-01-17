@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{tgschola} % or any other font package you like
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{%
+  \footnotesize\sffamily
+  \yourname\quad
+  \textcolor{blue}{\youremail}}
+
+\newcommand{\soptitle}{Week 1 Assignment}
+\newcommand{\yourname}{Himavanth Boddu}
+\newcommand{\youremail}{32451847}
+
+\newcommand{\statement}[1]{\par\medskip
+  \underline{\textcolor{blue}{\textbf{#1:}}}\space
+}
+
+\usepackage[
+  breaklinks,
+  pdftitle={\yourname - \soptitle},
+  pdfauthor={\yourname},
+  unicode
+]{}
+
+\begin{document}
+
+\begin{center}\LARGE\soptitle\\
+\large Database System Implementation
+\end{center}
+
+\hrule
+\vspace{1pt}
+\hrule height 1pt
+
+\bigskip
+Valgrind\cite{valgrind} is a General Public licensed system for debugging Linux programs and is widely used to check memory management and bugs in threading making the applications more stable and error-free. It uses dynamic binary instrumentation, so it is not required to make changes in applications. However the main issue is that the programs run slower with a factor of 5 to 100, which can be mitigated by using Valgrind whenever required instead of running it all the time. Clang\cite{perf} project gives a front-end and tooling infrastructure for the C language family by providing features like fast compiling with lesser memory usage. It allows closer interaction with IDE's and is based on modular library based architecture. 
+\bigskip
+
+
+\bigskip
+Perf \cite{perf} is a Linux based profiler tool that presents simple commandline interface showing performance measurement by abstracting the CPU hardware differences. To generate statistics of running count while process execution we use perf stat command. At the end of running the application, the occurrences of events like cycles, cache- misses and context switches are aggregated and shown as output. To measure multiple events use comma separated list with no space.
+
+\bigskip
+Cache \cite{caching}is a data storage structure storing transient data making it faster to access by efficiently reusing previous computed data. A successful cache implies low miss rate that means that data is present most of the time in the cache. Caching improves work performance of the application and helps in reduce database cost by providing high input/output operations per second. It in turn reduces load on the backend and protects form slower performance.
+
+\bigskip
+\bigskip
+L1 data cache is the nearest to the processor also known as data memory and L1 instruction cache (16KB) corresponds to instruction memory. We also have L2 cache(8MB) underneath L1 and can also have L3(32MB). Cache operates on cache lines which is usually between 16 to 128 bytes. These should be bigger in size to exploit more spatial locality in cases where it can effectively prefetch data that is not explicitly asked for. However if there is smaller size data in play , then focus is on temporal locality and large cache lines waste space and bandwidth\cite{cache}.
+\bigskip
+
+
+\bigskip
+Cache prefetching\cite{prefetch} is used by processors to improve the performance by fetching data from the source that is main memory from slower to faster memory ahead of time of its need. The prefetch logic can be decided on factors like cache miss penalty and execution time to make sure the efficiency is improved. The data structures involved should be simple in nature else prefetcher would be vastly inefficient in case of complex data structures. The structures like heaps perform worst due to random memory jumps in its implementation however arrays are best for this case due to its continuous memory allocation nature.
+
+\bigskip
+
+\begin{thebibliography}{9}
+\bibitem{valgrind}http://www.valgrind.org/info/
+\bibitem{clang}https://clang.llvm.org/
+\bibitem{perf} https://perf.wiki.kernel.org/index.php/Tutorial
+\bibitem{caching}https://aws.amazon.com/caching/
+\bibitem{cache}https://cseweb.ucsd.edu/classes/sp13/cse141-a/Slides/10\_Caches\_detail.pdf
+\bibitem{prefetch}https://en.wikipedia.org/wiki/Cache\_prefetching
+
+\end{thebibliography}
+\end{document}
